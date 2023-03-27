@@ -1,5 +1,5 @@
 " Use (:execute 'edit' luaFile) to edit the lua config
-" Moved lua import at the bottom become all the imports in lua need to be
+" Moved lua import at the bottom because all the imports in lua need to be
 " after 'plug#end'
 let luaFile = "/home/ahbar/.config/nvim/lua/config/init.lua"
 
