@@ -1,7 +1,11 @@
 " Use (:execute 'edit' luaFile) to edit the lua config
 " Moved lua import at the bottom because all the imports in lua need to be
 " after 'plug#end'
-let luaFile = "/home/ahbar/.config/nvim/lua/config/init.lua"
+" Set lua file's path according to OS filesystem
+let luaFile = "~/AppData/Local/nvim/lua/config/init.lua"
+if has('unix')
+	luaFile = "/home/ahbar/.config/nvim/lua/config/init.lua"
+endif
 
 " Print some greeting messages 
 echo "(^ - ^)/"
