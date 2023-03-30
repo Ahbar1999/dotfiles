@@ -58,6 +58,10 @@ nnoremap <leader>ot :vsplit<cr><esc>:terminal<cr>i
 inoremap <leader>e  <esc>eli
 inoremap <leader>b  <esc>bi
 nnoremap <leader>pfn <esc>:echo expand('%:t')<cr>
+" File search shortcuts using fzf
+nnoremap <leader>F :Files<cr> 
+
+
 
 " SOME AUTOCOMMAND SETTINGS
 " Comment Shortcuts
@@ -136,10 +140,18 @@ Plug 'morhetz/gruvbox'
 
 " GOLANG Extension
 Plug 'fatih/vim-go', {'do': ':GoUpdateBinaries' }
+
 Plug 'udalov/kotlin-vim'
 
 " RUST Plugins
 Plug 'rust-lang/rust.vim'
+
+" phpactor plugin(also implements language server)
+Plug 'phpactor/phpactor', {'for': 'php', 'tag': '*', 'do': 'composer install --no-dev -o'}
+
+" Fuzzy file finder
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 call plug#end()
 "END PLUG-IN MANAGER SETTINGS
