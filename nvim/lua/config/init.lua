@@ -57,6 +57,23 @@ lsp_config['ccls'].setup({
 	root_dir = lsp_config.util.root_pattern('compile_commands.json', './build/compile_commands.json', '.ccls', '.git')
 })
 
+lsp_config['gopls'].setup({
+	on_attach = on_attach,
+	flags = {},
+	cmd = {"gopls", "serve"},	
+	filetypes = {"go", "gomod"},
+	root_dir = lsp_config.util.root_pattern("go.work", "go.mod", ".git"),
+	settings = {
+		gopls = {
+			analyses = {
+				unusedparams = true,
+			},
+			staticcheck = true,
+		}
+	}
+})
+
+
 border = string.rep("*", 10)
 empty_line = string.rep(" ", 10)
 --print("\n\n")
