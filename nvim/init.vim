@@ -34,7 +34,7 @@ set autoindent
 " referenced by <leader>
 let mapleader = "-"
 " referenced by <localleader>
-let localleader = "\\"
+let localleader = ","
 
 " Cut the current line and paste it below the current line, works in all the modes
 nnoremap <leader>- ddp
@@ -155,6 +155,12 @@ Plug 'phpactor/phpactor', {'for': 'php', 'tag': '*', 'do': 'composer install --n
 " Fuzzy file finder
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+
+" Clojure repl plugin
+" Plug 'Olical/conjure'
+" Plug 'tpope/vim-dispatch'
+" Plug 'clojure-vim/vim-jack-in'
+" Plug 'radenling/vim-dispatch-neovim'
 
 call plug#end()
 "END PLUG-IN MANAGER SETTINGS
