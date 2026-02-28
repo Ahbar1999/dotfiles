@@ -60,6 +60,9 @@ bindsym $mod+d exec rofi -show run -lines 3 -eh 2 -width 100 -padding 800 -opaci
 # .desktop file. It is a wrapper around dmenu, so you need that installed.
 # bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
 
+# execute lock screen
+bindsym $mod+Control+l exec /home/ahbr/.config/i3/lock.sh
+
 # change focus
 bindsym $mod+j focus left
 bindsym $mod+k focus down
@@ -186,25 +189,25 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
+# Start i3bar to display a workspace bar (plus the system information i3status finds out, if available)
 bar {
-        status_command i3status
+        status_command i3blocks -c ~/.config/i3blocks/config
 }
 
 
 # Ahbar's customization
 # shortcut mappings for initiating lockscreen
-bindsym $mod+shift+x exec i3lock 
+bindsym $mod+shift+x exec i3lock
+# toggle laptop's keyboard(for using an external) 
+bindsym $mod+Control+k exec xinput disable "AT Translated Set 2 keyboard"
+bindsym $mod+Control+Shift+k exec xinput enable "AT Translated Set 2 keyboard"
 
 # autolaunch apps 
-exec firefox
+exec google-chrome 
 # set the wallpaper 
 
-# dont add the below wallpaper, trust me you dont want a naked woman the first thing you see, stay strong king
-# exec_always feh --bg-scale /home/ahbar/Downloads/wallpaper.png
+# exec_always feh --bg-scale /home/ahbar/wallpaper.jpg
 
-exec_always feh --bg-scale /home/ahbar/wallpaper.jpg
 exec_always compton
 
 

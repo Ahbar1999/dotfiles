@@ -3,25 +3,29 @@
 " after 'plug#end'
 " Set lua file's path according to OS filesystem
 let luaFile = "~/AppData/Local/nvim/lua/config/init.lua"
+
 if has('unix')
-	luaFile = "/home/ahbar/.config/nvim/lua/config/init.lua"
+	let luaFile = "~/.config/nvim/lua/config/init.lua"
 endif
 
 " Print some greeting messages 
 echo "(^ - ^)/"
 
 " Using multiline strings 
-echo "Hello, Ahbar\n\r
-\ ██╗░░░░░░░██╗███████╗██╗░░░░░░█████╗░░█████╗░███╗░░░███╗███████╗  ██████╗░░█████╗░░█████╗░██╗░░██╗██╗\n\r
-\ ██║░░██╗░░██║██╔════╝██║░░░░░██╔══██╗██╔══██╗████╗░████║██╔════╝  ██╔══██╗██╔══██╗██╔══██╗██║░██╔╝██║\n\r
-\ ╚██╗████╗██╔╝█████╗░░██║░░░░░██║░░╚═╝██║░░██║██╔████╔██║█████╗░░  ██████╦╝███████║██║░░╚═╝█████═╝░██║\n\r
-\  ████╔═████║░██╔══╝░░██║░░░░░██║░░██╗██║░░██║██║╚██╔╝██║██╔══╝░░  ██╔══██╗██╔══██║██║░░██╗██╔═██╗░╚═╝\n\r
-\  ╚██╔╝░╚██╔╝░███████╗███████╗╚█████╔╝╚█████╔╝██║░╚═╝░██║███████╗  ██████╦╝██║░░██║╚█████╔╝██║░╚██╗██╗\n\r
-\   ╚═╝░░░╚═╝░░╚══════╝╚══════╝░╚════╝░░╚════╝░╚═╝░░░░░╚═╝╚══════╝  ╚═════╝░╚═╝░░╚═╝░╚════╝░╚═╝░░╚═╝╚═╝\n\r
-\ \n\r\n\r
-\ \n\r\n\r
-\ \n\r\n\r
-\ \n\r\n\r"
+echo "Hello, Ahbar\n\r"
+
+" just remove the fking eysore
+
+" \ ██╗░░░░░░░██╗███████╗██╗░░░░░░█████╗░░█████╗░███╗░░░███╗███████╗  ██████╗░░█████╗░░█████╗░██╗░░██╗██╗\n\r
+" \ ██║░░██╗░░██║██╔════╝██║░░░░░██╔══██╗██╔══██╗████╗░████║██╔════╝  ██╔══██╗██╔══██╗██╔══██╗██║░██╔╝██║\n\r
+" \ ╚██╗████╗██╔╝█████╗░░██║░░░░░██║░░╚═╝██║░░██║██╔████╔██║█████╗░░  ██████╦╝███████║██║░░╚═╝█████═╝░██║\n\r
+" \  ████╔═████║░██╔══╝░░██║░░░░░██║░░██╗██║░░██║██║╚██╔╝██║██╔══╝░░  ██╔══██╗██╔══██║██║░░██╗██╔═██╗░╚═╝\n\r
+" \  ╚██╔╝░╚██╔╝░███████╗███████╗╚█████╔╝╚█████╔╝██║░╚═╝░██║███████╗  ██████╦╝██║░░██║╚█████╔╝██║░╚██╗██╗\n\r
+" \   ╚═╝░░░╚═╝░░╚══════╝╚══════╝░╚════╝░░╚════╝░╚═╝░░░░░╚═╝╚══════╝  ╚═════╝░╚═╝░░╚═╝░╚════╝░╚═╝░░╚═╝╚═╝\n\r
+" \ \n\r\n\r
+" \ \n\r\n\r
+" \ \n\r\n\r
+" \ \n\r\n\r"
 
 " Setting some editor variables
 set number
@@ -123,7 +127,7 @@ augroup END
 
 
 "START PLUG-IN MANAGER SETTINGS
-call plug#begin('~/.vim/plugged')
+call plug#begin()
 
 " lsp config
 Plug 'neovim/nvim-lspconfig'
@@ -156,6 +160,11 @@ Plug 'phpactor/phpactor', {'for': 'php', 'tag': '*', 'do': 'composer install --n
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" tree sitter plugin
+Plug 'nvim-treesitter/nvim-treesitter', {'lazy': 'false', 'build': ':TSUpdate'}
+
 " Clojure repl plugin
 " Plug 'Olical/conjure'
 " Plug 'tpope/vim-dispatch'
@@ -168,9 +177,9 @@ call plug#end()
 " Load the lua files in config folder and execute them
 lua require('config')
 
-" syntax enable
+syntax enable
 " set background=dark
 " colorscheme gruvbox 
-colorscheme Carbonfox
+colorscheme carbonfox
 syntax enable
 filetype plugin indent on
