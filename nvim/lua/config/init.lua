@@ -81,11 +81,19 @@ vim.lsp.config("gopls", {
 
 vim.lsp.config("clangd", {
 	on_attach = on_attach,
-	cmd = {'clangd', '--background-index', '--clang-tidy', '--log=verbose'},	
+	cmd = {
+		'clangd', 
+		'--background-index',
+		'--clang-tidy', 
+		'--log=verbose',
+		'--query-driver=/usr/bin/g++,/usr/bin/clang++,/usr/bin/clang',
+		'--header-insertion=never',	-- what does it do ?? idk
+	},	
 	init_options = {
 		fallbackFlags = {'-std=c++17'},
 	},
 	root_markers = {"compile_commands.json", ".git"},
+	filetypes = {'c', 'cpp'},
 })
 
 -- enable lsp clients 
@@ -113,12 +121,22 @@ vim.api.nvim_create_autocmd('FileType', {
 -- carbonfox theme customization(yeah this is my life, i customize my text editor in my precious time
 require('nightfox').setup({
 	options= {
+		dim_inactive = false,
 		styles = {
 			comments = "italic",
 			types = "bold"
-		}
-	}
+		},
+	},
+	-- groups = {
+	--	all = {
+	--		@keyword.import.cpp = {},
+	--	}
+	-- }
 })
+
+-- following line doesnt seem to work, need to figure this out, 
+-- otherwise the theme just converts unused imports into comments visually
+-- vim.api.nvim_set_hl(0, "@keyword.import.cpp", {})
 
 border = string.rep("*", 10)
 empty_line = string.rep(" ", 10)
