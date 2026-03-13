@@ -1,0 +1,18 @@
+# define some variables
+# tyla = "#BC29FF"
+
+[window]
+dimensions.columns = 120 
+dimensions.lines = 30
+opacity = 0.4
+blur = true
+
+[font]
+normal.family = "Jetbrains Mono"
+size = 14.0
+
+[cursor]
+style = { shape = "Underline" }
+
+[colors]
+cursor = { text = "#BC29FF", cursor = "#BC29FF" }

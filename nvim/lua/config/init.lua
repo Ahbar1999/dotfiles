@@ -107,7 +107,7 @@ vim.lsp.enable({"clangd"})
 -- config treesitter(probably should start separating these blocks in separate files
 
 vim.api.nvim_create_autocmd('FileType', {
-	pattern = {'cpp', 'c'},
+	pattern = {'cpp', 'c', 'rust'},
 	callback = function()
 		vim.treesitter.start()
 		vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
@@ -122,6 +122,7 @@ vim.api.nvim_create_autocmd('FileType', {
 require('nightfox').setup({
 	options= {
 		dim_inactive = false,
+		transparent= true,
 		styles = {
 			comments = "italic",
 			types = "bold"
@@ -137,6 +138,11 @@ require('nightfox').setup({
 -- following line doesnt seem to work, need to figure this out, 
 -- otherwise the theme just converts unused imports into comments visually
 -- vim.api.nvim_set_hl(0, "@keyword.import.cpp", {})
+
+-- treesitter config -> set in as autocmd
+-- vim.opt.foldmethod = 'expr'
+-- vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
+
 
 border = string.rep("*", 10)
 empty_line = string.rep(" ", 10)
