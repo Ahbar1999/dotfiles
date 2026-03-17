@@ -47,6 +47,7 @@ nnoremap <leader>_ ddkP
 " Dont use the above 2 commands at the first or last line, its not perfect ik 
 " Delete the current line in insertion mode(Although the exact steps are longer) 
 vnoremap <c-d> <esc>ddi 
+
 inoremap <leader>s <esc>:w<cr>
 " Open File Explorer with Ctrl+e
 nnoremap <c-e> :vsplit<cr><esc>:execute('Explore')<cr>
@@ -57,15 +58,18 @@ nnoremap <leader>ovr :e $MYVIMRC<cr>
 nnoremap <leader>ev  :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv  :source $MYVIMRC<cr><cr>:e<cr>
 nnoremap <leader>olua :execute 'edit' luaFile<cr>
+
 " Split window vertically and open the command prompt in one buffer 
 nnoremap <leader>ot :vsplit<cr><esc>:terminal<cr>i 
 inoremap <leader>e  <esc>eli
 inoremap <leader>b  <esc>bi
 nnoremap <leader>pfn <esc>:echo expand('%:t')<cr>
+
 " File search shortcuts using fzf
 nnoremap <leader>F :Files<cr> 
 
-
+" visual mode -> go the other paranthese pair's start of line  
+nnoremap <leader>v v%0
 
 " SOME AUTOCOMMAND SETTINGS
 " Comment Shortcuts

@@ -128,11 +128,12 @@ require('nightfox').setup({
 			types = "bold"
 		},
 	},
+
 	-- groups = {
-	--	all = {
-	--		@keyword.import.cpp = {},
-	--	}
-	-- }
+		-- all = {
+		-- 	Visual = { bg = "palette.cyan.dim" },
+		-- },
+	-- },
 })
 
 -- following line doesnt seem to work, need to figure this out, 
