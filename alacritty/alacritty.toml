@@ -8,11 +8,14 @@ opacity = 0.4
 blur = true
 
 [font]
-normal.family = "Jetbrains Mono"
-size = 14.0
+normal = {family = "Jetbrains Mono", style = "Regular"}
+size = 16.0
 
 [cursor]
-style = { shape = "Underline" }
+style = { shape = "Underline", blinking = "On"}
 
 [colors]
 cursor = { text = "#BC29FF", cursor = "#BC29FF" }
+
+[general]
+working_directory = "/home/ahbr/"

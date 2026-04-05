@@ -4,12 +4,36 @@
 -- lsp_config = require('lspconfig') --> deprecated  
 
 -- print("loading lua configs")
-
 local opts = { noremap = true, silent = true }
 vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
 vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
+
+-- contextual visual highlight 
+vim.keymap.set({'x'}, ']n', function() 
+	require 'vim.treesitter._select'.select_next(vim.v.count1)
+end, { noremap = true, desc = 'select next(or more if passed a count) treesitter node'})
+
+vim.keymap.set({'x'}, '[n', function() 
+	require 'vim.treesitter._select'.select_prev(vim.v.count1)
+end, { noremap = true, desc = 'select previous(or more if passed a count) treesitter node'})
+
+vim.keymap.set({'x', 'o'}, 'an', function() 
+	if vim.treesitter.get_parser(nil, nil, {error =false}) then
+		require 'vim.treesitter._select'.select_parent(vim.v.count1)
+	else
+		vim.lsp.buf.selection_range(vim.v.count1)
+	end
+end, { noremap = true, desc = 'select one parent(or more if passed a count) treesitter node; falls back to basic selection if treesitter not installed'})
+
+vim.keymap.set({'x', 'o'}, 'in', function() 
+	if vim.treesitter.get_parser(nil, nil, {error =false}) then
+		require 'vim.treesitter._select'.select_child(vim.v.count1)
+	else
+		vim.lsp.buf.selection_range(vim.v.count1)
+	end
+end, { noremap = true, desc = 'select one child(or more if passed a count) treesitter node; falls back to basic selection if treesitter not installed'})
 
 -- this is so the preview window, when autocomplete triggers, is not shown
 vim.api.nvim_set_option('completeopt', 'menu')
@@ -18,6 +42,9 @@ vim.api.nvim_set_option('completeopt', 'menu')
 local on_attach = function(client, bufnr)
 	-- Enable compeletion triggered by <Ctrl-x><Ctrl-o>
 	vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+	-- type hints
+	vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+
 	local bufopts = { noremap = true, silent = true, buffer = bufnr }	
 	vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
 	vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
@@ -112,6 +139,7 @@ vim.api.nvim_create_autocmd('FileType', {
 		vim.treesitter.start()
 		vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 		vim.opt.foldmethod = 'expr'
+		vim.opt.foldenable = false 
 		-- zo, zc, zO(open all), zC(close all), za, zv(view cursor line), zx(update fold), zm(fold more)
 		-- vim.wo[0][0].foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 		-- vim.wo[0][0].foldmethod = 'expr'

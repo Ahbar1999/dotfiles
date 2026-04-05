@@ -69,7 +69,7 @@ nnoremap <leader>pfn <esc>:echo expand('%:t')<cr>
 nnoremap <leader>F :Files<cr> 
 
 " visual mode -> go the other paranthese pair's start of line  
-nnoremap <leader>v v%0
+nnoremap <leader>{ v%0
 
 " SOME AUTOCOMMAND SETTINGS
 " Comment Shortcuts
