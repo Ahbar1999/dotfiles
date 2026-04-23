@@ -2,6 +2,10 @@
 -- lets fucking learn lua and fuck around with vim no ?
 
 -- lsp_config = require('lspconfig') --> deprecated  
+-- migrate to vim.pack
+vim.pack.add({
+	{ src = 'https://github.com/EdenEast/nightfox.nvim', name = 'nightfox' },
+})
 
 -- print("loading lua configs")
 local opts = { noremap = true, silent = true }
@@ -172,6 +176,8 @@ require('nightfox').setup({
 -- vim.opt.foldmethod = 'expr'
 -- vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
 
+-- colorscheme settings
+vim.cmd.colorscheme('carbonfox')
 
 border = string.rep("*", 10)
 empty_line = string.rep(" ", 10)

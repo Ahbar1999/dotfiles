@@ -145,7 +145,7 @@ Plug 'rust-lang/rust.vim'
 Plug 'dracula/vim', { 'as': 'dracula' }
 " Gruvbox color scheme
 Plug 'morhetz/gruvbox'
-Plug 'EdenEast/nightfox.nvim'
+" Plug 'EdenEast/nightfox.nvim'
 
 " GOLANG Extension
 " Plug 'fatih/vim-go', {'do': ':GoUpdateBinaries' }
@@ -184,6 +184,6 @@ lua require('config')
 syntax enable
 " set background=dark
 " colorscheme gruvbox 
-colorscheme carbonfox
+" colorscheme carbonfox
 syntax enable
 filetype plugin indent on
