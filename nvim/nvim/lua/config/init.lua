@@ -112,7 +112,7 @@ vim.lsp.config("gopls", {
 })
 
 -- copied from https://go.dev/gopls/editor/vim 
-autocmd("BufWritePre", {
+vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = "*.go",
   callback = function()
     local params = vim.lsp.util.make_range_params()
